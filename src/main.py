@@ -58,12 +58,22 @@ def get_planets():
     all_planets = list(map(lambda planet: planet.serialize(), planets_query))
     return jsonify(all_planets), 200
 
+@app.route('/planets/<int:planet_id>', methods=['GET'])
+def planet_by_id(planet_id):
+    planet1 = Planets.query.get(planet_id)
+    return jsonify(planet1.serialize()), 200
+
 
 @app.route('/species', methods=['GET'])
 def get_species():
     species_query = Species.query.all()
     all_species = list(map(lambda specie: specie.serialize(), species_query))
     return jsonify(all_species), 200
+
+@app.route('/species/<int:specie_id>', methods=['GET'])
+def specie_by_id(specie_id):
+    specie1 = Species.query.get(specie_id)
+    return jsonify(specie1.serialize()), 200
 
 
 @app.route('/vehicles', methods=['GET'])
@@ -72,6 +82,10 @@ def get_vehicles():
     all_vehicles = list(map(lambda vehicle: vehicle.serialize(),vehicles_query))
     return jsonify(all_vehicles), 200
 
+@app.route('/vehicles/<int:vehicle_id>', methods=['GET'])
+def vehicle_by_id(vehicle_id):
+    vehicle1 = vehicles.query.get(vehicle_id)
+    return jsonify(vehicle1.serialize()), 200
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':

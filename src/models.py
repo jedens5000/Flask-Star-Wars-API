@@ -46,7 +46,11 @@ class Planets(db.Model):
     population = db.Column(db.String(120), unique=False, nullable=False)
     surface_water = db.Column(db.String(120), unique=False, nullable=False)
     terrain = db.Column(db.String(120), unique=False, nullable=False)
-    url = db.Column(db.String(120), unique=False, nullable=False)
+    climate = db.Column(db.String(120), unique=False, nullable=False)
+    rotation = db.Column(db.String(120), unique=False, nullable=False)
+    orbit = db.Column(db.String(120), unique=False, nullable=False)
+    diameter = db.Column(db.String(120), unique=False, nullable=False)
+    imgurl = db.Column(db.String(120), unique=False, nullable=False)
 
     def serialize(self):
         return {
@@ -55,7 +59,11 @@ class Planets(db.Model):
             "population": self.population,
             "surface_water": self.surface_water,
             "terrain": self.terrain,
-            "gravity": self.gravity
+            "climate": self.climate,
+            "rotation": self.rotation,
+            "orbit": self.orbit,
+            "diameter": self.diameter,
+            "imgurl": self.imgurl
         }
 
 class Species(db.Model):
@@ -64,6 +72,10 @@ class Species(db.Model):
     name = db.Column(db.String(120), unique=True, nullable=False)
     classification = db.Column(db.String(120), unique=False, nullable=False)
     language = db.Column(db.String(120), unique=False, nullable=False)
+    homeplanet = db.Column(db.String(120), unique=False, nullable=False)
+    avg_height = db.Column(db.String(120), unique=False, nullable=False)
+    avg_lifespan = db.Column(db.String(120), unique=False, nullable=False)
+    imgurl = db.Column(db.String(120), unique=False, nullable=False)
     
 
     def serialize(self):
@@ -71,7 +83,11 @@ class Species(db.Model):
             "id": self.id,
             "name": self.name,
             "classification": self.classification,
-            "language": self.language
+            "language": self.language,
+            "homeplanet": self.homeplanet,
+            "avg_height": self.avg_height,
+            "avg_lifespan": self.avg_lifespan,
+            "imgurl": self.imgurl
         }
 
 class Vehicles(db.Model):
@@ -84,6 +100,7 @@ class Vehicles(db.Model):
     crew = db.Column(db.String(120), unique=False, nullable=False)
     passengers = db.Column(db.String(120), unique=False, nullable=False)
     vehicle_class = db.Column(db.String(120), unique=False, nullable=False)
+    imgurl = db.Column(db.String(120), unique=False, nullable=False)
     
 
     def serialize(self):
@@ -95,5 +112,6 @@ class Vehicles(db.Model):
             "length": self.length,
             "crew": self.crew,
             "passengers": self.passengers,
-            "vehicle_class": self.vehicle_class
+            "vehicle_class": self.vehicle_class,
+            "imgurl": self.imgurl
         }

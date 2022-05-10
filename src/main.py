@@ -8,7 +8,7 @@ from flask_swagger import swagger
 from flask_cors import CORS
 from utils import APIException, generate_sitemap
 from admin import setup_admin
-from models import db, User, Characters, Planets
+from models import db, User, Characters, Planets, Species, Vehicles
 #from models import Person
 
 app = Flask(__name__)
@@ -57,6 +57,20 @@ def get_planets():
     planets_query = Planets.query.all()
     all_planets = list(map(lambda planet: planet.serialize(), planets_query))
     return jsonify(all_planets), 200
+
+
+@app.route('/species', methods=['GET'])
+def get_species():
+    species_query = Species.query.all()
+    all_species = list(map(lambda specie: specie.serialize(), species_query))
+    return jsonify(all_species), 200
+
+
+@app.route('/vehicles', methods=['GET'])
+def get_vehicles():
+    vehicles_query = Vehicles.query.all()
+    all_vehicles = list(map(lambda vehicle: vehicle.serialize(),vehicles_query))
+    return jsonify(all_vehicles), 200
 
 
 # this only runs if `$ python src/main.py` is executed

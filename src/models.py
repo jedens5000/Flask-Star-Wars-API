@@ -94,7 +94,6 @@ class Vehicles(db.Model):
     __tablename__ = 'vehicles'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=True, nullable=False)
-    model = db.Column(db.String(120), unique=False, nullable=False)
     manufacturer = db.Column(db.String(120), unique=False, nullable=False)
     length = db.Column(db.String(120), unique=False, nullable=False)
     crew = db.Column(db.String(120), unique=False, nullable=False)
@@ -107,7 +106,6 @@ class Vehicles(db.Model):
         return {
             "id": self.id,
             "name": self.name,
-            "modal ": self.model,
             "manufacturer": self.manufacturer,
             "length": self.length,
             "crew": self.crew,
